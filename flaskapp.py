@@ -14,10 +14,10 @@ example_list = [
 
 @app.route("/")
 def hello_world():
-    return 'Hello, this is OWI-Scheduler speaking ...<br> try <a href="./new_list">new_list</a>'
+    return 'Hello, try <a href="./url_frontier">url_frontier</a>'
 
 
-@app.route('/new_list', methods=['GET'])
+@app.route('/url_frontier', methods=['GET'])
 def get_new_list():
     return jsonify(example_list)
 
