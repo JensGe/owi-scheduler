@@ -1,24 +1,26 @@
-from flask import Flask
-from collections import Counter
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
 
-@app.route('/')
+example_list = [
+    {
+        'meta': 'information',
+        'length': 2,
+        'urls': ['http://www.example.com', 'http://www.abc.com'],
+    }
+]
+
+
+@app.route("/")
 def hello_world():
-    return 'Hello from Flask!'
+    return 'Hello, this is OWI-Scheduler speaking ...<br> try <a href="./new_list">new_list</a>'
 
 
-@app.route('/countme/<input_str>')
-def count_me(input_str):
-    input_counter = Counter(input_str)
-    response = []
-    for letter, count in input_counter.most_common():
-        response.append('"{}": {}'.format(letter, count))
-    return '<br>'.join(response)
+@app.route('/new_list', methods=['GET'])
+def get_new_list():
+    return jsonify(example_list)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     app.run()
-
-
-
