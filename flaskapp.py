@@ -17,13 +17,6 @@ def count_me(input_str):
         response.append('"{}": {}'.format(letter, count))
     return '<br>'.join(response)
 
-
-@app.route('/check')
-def check():
-    return "test"
-
-
-
 if __name__ == '__main__':
     app.run()
 
